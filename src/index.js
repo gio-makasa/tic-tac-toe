@@ -37,6 +37,7 @@ class Board extends React.Component {
   }
 
   renderSquare(i) {
+    const winner = calculateWinner(this.state.squares);
     return <Square value={this.state.squares[i]} onClick={() => this.handleClick(i)} />;
   }
 
@@ -52,7 +53,7 @@ class Board extends React.Component {
         status = winner;
         stat_style = 'status yellow';
       } else {
-        status = 'Winner: ' + winner;
+        status = 'Winner: ' + this.state.squares[winner[0]];
         stat_style = 'status green';
       }
     } else {
@@ -103,7 +104,7 @@ function calculateWinner(squares) {
   for (let i of lines) {
     const [a, b, c] = i;
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a];
+      return i;
     }
   }
   for(let i of squares){

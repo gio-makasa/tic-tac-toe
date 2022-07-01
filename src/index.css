@@ -4,6 +4,7 @@ body {
 }
 
 .game {
+  width: fit-content;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -90,5 +91,12 @@ body {
   }
   to{
     box-shadow: 0 0 5px red, 0 0 15px rgb(255, 60, 60), 0 0 25px rgb(255, 120, 120);
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  .square{
+    width: 70px;
+    height: 70px;
   }
 }
