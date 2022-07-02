@@ -5,6 +5,9 @@ import './index.css';
 function Square(props) {
   let square_style = 'square blue';
   props.value==='X' ? square_style = 'square blue' : square_style = 'square red';
+  if(props.winner){
+    square_style = 'square green';
+  }
   return (
     <button className={square_style} onClick={props.onClick}>
       {props.value}
@@ -36,23 +39,30 @@ class Board extends React.Component {
     this.setState({squares: squares, xIsNext: !this.state.xIsNext});
   }
 
-  renderSquare(i) {
+  renderSquare(i,winner) {
+    if(winner){
+      for(let x of winner){
+        if(x === i){
+          return <Square value={this.state.squares[i]} winner={true} onClick={() => this.handleClick(i)} />;
+        }
+      }
+    } 
     return <Square value={this.state.squares[i]} onClick={() => this.handleClick(i)} />;
   }
 
   render() {
-    const winner = calculateWinner(this.state.squares);
+    const endgame = calculateWinner(this.state.squares);
     let stat_style = 'status blue';
     let status;
 
     this.state.xIsNext ? stat_style = 'status blue' : stat_style = 'status red';
 
-    if (winner) {
-      if(winner==='TIE'){
-        status = winner;
+    if (endgame) {
+      if(endgame==='TIE'){
+        status = endgame;
         stat_style = 'status yellow';
       } else {
-        status = 'Winner: ' + winner;
+        status = 'Winner: ' + this.state.squares[endgame[0]];
         stat_style = 'status green';
       }
     } else {
@@ -66,19 +76,19 @@ class Board extends React.Component {
         <div className="game-board">
           <div>
             <div className="board-row">
-              {this.renderSquare(0)}
-              {this.renderSquare(1)}
-              {this.renderSquare(2)}
+              {this.renderSquare(0,endgame)}
+              {this.renderSquare(1,endgame)}
+              {this.renderSquare(2,endgame)}
             </div>
             <div className="board-row">
-              {this.renderSquare(3)}
-              {this.renderSquare(4)}
-              {this.renderSquare(5)}
+              {this.renderSquare(3,endgame)}
+              {this.renderSquare(4,endgame)}
+              {this.renderSquare(5,endgame)}
             </div>
             <div className="board-row">
-              {this.renderSquare(6)}
-              {this.renderSquare(7)}
-              {this.renderSquare(8)}
+              {this.renderSquare(6,endgame)}
+              {this.renderSquare(7,endgame)}
+              {this.renderSquare(8,endgame)}
             </div>
           </div>
         </div>
@@ -103,7 +113,7 @@ function calculateWinner(squares) {
   for (let i of lines) {
     const [a, b, c] = i;
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a];
+      return i;
     }
   }
   for(let i of squares){
