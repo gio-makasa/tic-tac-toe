@@ -51,18 +51,18 @@ class Board extends React.Component {
   }
 
   render() {
-    const endgame = calculateWinner(this.state.squares);
+    const endGame = calculateWinner(this.state.squares);
     let stat_style = 'status blue';
     let status;
 
     this.state.xIsNext ? stat_style = 'status blue' : stat_style = 'status red';
 
-    if (endgame) {
-      if(endgame==='TIE'){
-        status = endgame;
+    if (endGame) {
+      if(endGame==='TIE'){
+        status = endGame;
         stat_style = 'status yellow';
       } else {
-        status = 'Winner: ' + this.state.squares[endgame[0]];
+        status = 'Winner: ' + this.state.squares[endGame[0]];
         stat_style = 'status green';
       }
     } else {
@@ -76,19 +76,19 @@ class Board extends React.Component {
         <div className="game-board">
           <div>
             <div className="board-row">
-              {this.renderSquare(0,endgame)}
-              {this.renderSquare(1,endgame)}
-              {this.renderSquare(2,endgame)}
+              {this.renderSquare(0,endGame)}
+              {this.renderSquare(1,endGame)}
+              {this.renderSquare(2,endGame)}
             </div>
             <div className="board-row">
-              {this.renderSquare(3,endgame)}
-              {this.renderSquare(4,endgame)}
-              {this.renderSquare(5,endgame)}
+              {this.renderSquare(3,endGame)}
+              {this.renderSquare(4,endGame)}
+              {this.renderSquare(5,endGame)}
             </div>
             <div className="board-row">
-              {this.renderSquare(6,endgame)}
-              {this.renderSquare(7,endgame)}
-              {this.renderSquare(8,endgame)}
+              {this.renderSquare(6,endGame)}
+              {this.renderSquare(7,endGame)}
+              {this.renderSquare(8,endGame)}
             </div>
           </div>
         </div>
