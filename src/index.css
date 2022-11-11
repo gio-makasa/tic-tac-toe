@@ -17,6 +17,10 @@ body {
   animation: glow 2s ease-in-out infinite alternate;
 }
 
+.game-board{
+  width: 100%;
+}
+
 .board-row{
   height: 100px;
   width: 100%;
