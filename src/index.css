@@ -17,6 +17,11 @@ body {
   animation: glow 2s ease-in-out infinite alternate;
 }
 
+.board-row{
+  height: 100px;
+  width: 100%;
+}
+
 .board-row:after {
   clear: both;
   content: "";
@@ -36,8 +41,8 @@ body {
   float: left;
   font-size: 50px;
   font-weight: bold;
-  height: 100px;
-  width: 100px;
+  height: 100%;
+  width: 33.33%;
   text-align: center;
 }
 
