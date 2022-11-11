@@ -4,8 +4,7 @@ body {
 }
 
 .game {
-  width: 300px;
-  height: 300px;
+  width: fit-content;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -16,6 +15,11 @@ body {
   border: 1px solid white;
   overflow: hidden;
   animation: glow 2s ease-in-out infinite alternate;
+}
+
+.game-board{
+  width: 300px;
+  height: 300px;
 }
 
 .board-row:after {
