@@ -4,7 +4,7 @@ body {
 }
 
 .game {
-  width: fit-content;
+  width: 300px;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -36,8 +36,8 @@ body {
   float: left;
   font-size: 50px;
   font-weight: bold;
-  height: 100px;
-  width: 100px;
+  height: 33.33%;
+  width: 33.33%
   text-align: center;
 }
 
@@ -94,9 +94,8 @@ body {
   }
 }
 
-@media only screen and (max-width: 610px) {
-  .square{
-    width: 70px;
-    height: 70px;
+@media only screen and (max-width: 300px) {
+  .game{
+    width: 100%;
   }
 }
